@@ -20,7 +20,7 @@ const Home: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Taskfy - A melhor forma de organizar seu trabalho</title>
+        <title>Taskfy - A melhor forma para organizar seu trabalho</title>
       </Head>
 
       <Header />
