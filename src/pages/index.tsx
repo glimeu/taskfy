@@ -1,10 +1,17 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import React from 'react';
-import { FiPlay } from 'react-icons/fi';
+import React, { useRef } from 'react';
+import { FiPlay, FiSend } from 'react-icons/fi';
+import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
+import * as Yup from 'yup';
 
 import Header from '../components/Header';
 import BaseLink from '../components/BaseLink';
+import Footer from '../components/Footer';
+import Input from '../components/Input';
+import TextArea from '../components/TextArea';
+import Button from '../components/Button';
 
 import {
   AboutAndContactSection,
@@ -14,9 +21,46 @@ import {
   PageWrapper,
   PricingSection,
 } from '../styles/pages/Home';
-import Footer from '../components/Footer';
+
+interface FormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
+const formDataSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(4, 'Este campo tem que ter pelo menos 4 caracteres.')
+    .max(20, 'Este campo pode ter no máximo 20 caracteres.')
+    .required('Este campo é obrigatório.'),
+  email: Yup.string()
+    .email('Este campo tem que ser um email válido.')
+    .required('Este campo é obrigatório.'),
+  message: Yup.string()
+    .min(8, 'Este campo tem que ter pelo menos 8 caracteres.')
+    .max(300, 'Este campo pode ter no máximo 300 caracteres.')
+    .required(() => 'Este campo é obrigatório.'),
+});
 
 const Home: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
+
+  async function handleSubmit(data: FormData): Promise<void> {
+    try {
+      await formDataSchema.validate(data, {
+        abortEarly: false,
+      });
+
+      console.log(data);
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        err.inner.forEach((fieldErr) => {
+          formRef.current.setFieldError(fieldErr.path, fieldErr.errors[0]);
+        });
+      }
+    }
+  }
+
   return (
     <>
       <Head>
@@ -116,29 +160,35 @@ const Home: React.FC = () => {
                   voluptatibus eveniet officiis qui vel, omnis voluptatem ad voluptate distinctio
                   consequuntur cumque reprehenderit magni dicta incidunt repudiandae ullam odio.
                 </p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum repellendus quibusdam
+                  voluptatibus eveniet officiis qui vel, omnis voluptatem ad voluptate distinctio
+                  consequuntur cumque reprehenderit magni dicta incidunt repudiandae ullam odio.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum repellendus quibusdam
+                  voluptatibus eveniet officiis qui vel, omnis voluptatem ad voluptate distinctio
+                  consequuntur cumque reprehenderit magni dicta incidunt repudiandae ullam odio.
+                </p>
               </div>
 
-              <form onSubmit={(e) => e.preventDefault()}>
+              <Form ref={formRef} onSubmit={handleSubmit}>
                 <strong>Envie uma mensagem</strong>
 
-                <label>
-                  <strong>Nome</strong>
-                  <input type="text" />
-                  <span>Seu nome</span>
-                </label>
+                <Input name="name" label="Nome" description="Seu nome" />
+                <Input
+                  name="email"
+                  type="email"
+                  label="Email"
+                  description="Seu endereço eletrônico"
+                />
+                <TextArea name="message" label="Mensagem" description="Sua mensagem" />
 
-                <label>
-                  <strong>Email</strong>
-                  <input type="text" />
-                  <span>Seu endereço eletrônico</span>
-                </label>
-
-                <label>
-                  <strong>Mensagem</strong>
-                  <textarea></textarea>
-                  <span>Sua mensagem</span>
-                </label>
-              </form>
+                <Button primary type="submit">
+                  <FiSend />
+                  Enviar
+                </Button>
+              </Form>
             </div>
           </AboutAndContactSection>
         </PageWrapper>

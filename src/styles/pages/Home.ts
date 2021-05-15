@@ -173,6 +173,8 @@ export const HowItWorksSection = styled(Section)`
 export const AboutAndContactSection = styled(Section)`
   flex-direction: column;
 
+  padding: 0 128px;
+
   & h2 {
     margin-bottom: 48px !important;
   }
@@ -182,6 +184,20 @@ export const AboutAndContactSection = styled(Section)`
     display: flex;
     flex-direction: column;
     flex: 1;
+
+    height: max-content;
+    padding: 24px;
+
+    background: ${({ theme }) => theme.colors.backgroundTwo};
+    border-radius: 12px;
+
+    & > strong {
+      margin: 0 auto 24px;
+
+      color: ${({ theme }) => theme.colors.title};
+      font-size: 1.87rem;
+      font-weight: 500;
+    }
   }
 
   & > div {
@@ -189,6 +205,19 @@ export const AboutAndContactSection = styled(Section)`
 
     & div {
       margin-right: 64px;
+
+      & p {
+        margin-bottom: 12px;
+
+        font-size: 1.2rem;
+        text-align: center;
+      }
+    }
+
+    & form {
+      & button {
+        width: max-content;
+      }
     }
   }
 `;
