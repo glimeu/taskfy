@@ -34,7 +34,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="pt-BR">
         <Head>
-          <link href="./favicon.ico" rel="shortcut icon" type="image/x-icon" />
+          <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600&display=swap"
