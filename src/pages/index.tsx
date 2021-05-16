@@ -6,6 +6,8 @@ import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 
+import { ContactSchema } from '../utils/Validators';
+import { useAlert } from '../hooks/Alert';
 import Header from '../components/Header';
 import BaseLink from '../components/BaseLink';
 import Footer from '../components/Footer';
@@ -28,30 +30,21 @@ interface FormData {
   message: string;
 }
 
-const formDataSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(4, 'Este campo tem que ter pelo menos 4 caracteres.')
-    .max(20, 'Este campo pode ter no máximo 20 caracteres.')
-    .required('Este campo é obrigatório.'),
-  email: Yup.string()
-    .email('Este campo tem que ser um email válido.')
-    .required('Este campo é obrigatório.'),
-  message: Yup.string()
-    .min(8, 'Este campo tem que ter pelo menos 8 caracteres.')
-    .max(300, 'Este campo pode ter no máximo 300 caracteres.')
-    .required(() => 'Este campo é obrigatório.'),
-});
-
 const Home: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const { sendInfoAlert } = useAlert();
 
   async function handleSubmit(data: FormData): Promise<void> {
     try {
-      await formDataSchema.validate(data, {
+      await ContactSchema.validate(data, {
         abortEarly: false,
       });
 
       console.log(data);
+      sendInfoAlert(
+        'Ops...',
+        'Essa função ainda não está funcionando, mas adorariamos que tenta-se novamente depois'
+      );
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         err.inner.forEach((fieldErr) => {

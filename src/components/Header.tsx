@@ -31,13 +31,13 @@ const Header: React.FC = () => {
 
         {/* Botoões de sign in e sign up */}
         <AuthContainer>
-          <Link href="#" passHref>
+          <Link href="/signin/" passHref>
             <BaseLink text>
               <FiLock />
               Entrar
             </BaseLink>
           </Link>
-          <Link href="#" passHref>
+          <Link href="/signup/" passHref>
             <BaseLink primary>Registar</BaseLink>
           </Link>
         </AuthContainer>

@@ -10,7 +10,7 @@ export const Container = styled.label<{ error?: boolean }>`
   display: flex;
   flex-direction: column;
 
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 
   & strong {
     margin-bottom: 4px;
