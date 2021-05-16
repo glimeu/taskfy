@@ -2,7 +2,7 @@ import Head from 'next/head';
 import React from 'react';
 import DashboardLayout from '../components/DashboardLayout';
 
-import { Container } from '../styles/pages/Dashboard';
+import { Container } from '../styles/pages/Reminders';
 
 const Reminders: React.FC = () => {
   return (

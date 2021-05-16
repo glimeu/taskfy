@@ -3,7 +3,7 @@ import Head from 'next/head';
 import React from 'react';
 import DashboardLayout from '../components/DashboardLayout';
 
-import { Container } from '../styles/pages/Dashboard';
+import { Container } from '../styles/pages/Profile';
 
 const Profile: React.FC = () => {
   return (
