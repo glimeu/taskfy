@@ -43,7 +43,7 @@ const SingUp: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Acessar conta</title>
+        <title>Criar conta</title>
       </Head>
 
       <Container>

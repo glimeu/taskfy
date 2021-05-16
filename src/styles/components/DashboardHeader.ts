@@ -8,16 +8,27 @@ export const Container = styled.div`
   margin: 24px 24px 0;
 
   & > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     margin-right: 48px;
     padding: 8px;
 
-    background: transparent;
+    background: ${({ theme }) => theme.colors.backgroundTwo};
     border: none;
+    border-radius: 4px;
 
     color: ${({ theme }) => theme.colors.title};
 
+    transition: all 0.15s;
+
     & svg {
       font-size: 1.33rem;
+    }
+
+    &:hover {
+      opacity: 0.85;
     }
   }
 

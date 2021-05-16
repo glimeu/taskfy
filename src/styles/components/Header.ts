@@ -49,7 +49,7 @@ export const NavItem = styled.a<{ active?: boolean }>`
     margin-right: 0;
   }
 
-  ${({ active }) => active && NavItemActive};
+  ${({ active }) => (active ? NavItemActive : undefined)};
 `;
 
 export const AuthContainer = styled.div`

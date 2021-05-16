@@ -45,5 +45,5 @@ export const Container = styled.label<{ error?: boolean }>`
     font-size: 0.93rem;
   }
 
-  ${({ error }) => error && InvalidContainer}
+  ${({ error }) => (error ? InvalidContainer : undefined)}
 `;

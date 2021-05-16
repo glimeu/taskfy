@@ -26,43 +26,43 @@ const SideBar: React.FC<SideBarProps> = ({ current }) => {
 
       <nav>
         <Link href="/dashboard/" passHref>
-          <a className={current === 'dashboard' && 'active'}>
+          <a className={current === 'dashboard' ? 'active' : undefined}>
             <FiGrid />
             Painel
           </a>
         </Link>
         <Link href="/tasks/" passHref>
-          <a className={current === 'tasks' && 'active'}>
+          <a className={current === 'tasks' ? 'active' : undefined}>
             <FiCheck />
             Tarefas
           </a>
         </Link>
         <Link href="/lists/" passHref>
-          <a className={current === 'lists' && 'active'}>
+          <a className={current === 'lists' ? 'active' : undefined}>
             <FiList />
             Listas
           </a>
         </Link>
         <Link href="/reminders/" passHref>
-          <a className={current === 'reminders' && 'active'}>
+          <a className={current === 'reminders' ? 'active' : undefined}>
             <FiClock />
             Lembretes
           </a>
         </Link>
         <Link href="/teams/" passHref>
-          <a className={current === 'teams' && 'active'}>
+          <a className={current === 'teams' ? 'active' : undefined}>
             <FiUsers />
             Times
           </a>
         </Link>
         <Link href="/settings/" passHref>
-          <a className={current === 'settings' && 'active'}>
+          <a className={current === 'settings' ? 'active' : undefined}>
             <FiSettings />
             Configurações
           </a>
         </Link>
         <Link href="/profile/" passHref>
-          <a className={current === 'profile' && 'active'}>
+          <a className={current === 'profile' ? 'active' : undefined}>
             <FiUser />
             Perfil
           </a>
