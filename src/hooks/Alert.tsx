@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useState } from 'react';
+import React, { createContext, MouseEvent, useContext, useReducer, useRef, useState } from 'react';
 import Button from '../components/Button';
 
 import { InfoBox, Overlay } from '../styles/hooks/Alert';
@@ -44,6 +44,8 @@ const AlertProvider: React.FC = ({ children }) => {
   const [alerts, dispatch] = useReducer(useAlerts, []);
   const [overlayState, setOverlaySate] = useState<'show' | 'closing' | 'hidden'>('hidden');
 
+  const overlayRef = useRef<HTMLDivElement>(null);
+
   const sendInfoAlert = (title: string, body: string): void => {
     dispatch({ type: 'new', alert: { title, body } });
     setOverlaySate('show');
@@ -58,9 +60,16 @@ const AlertProvider: React.FC = ({ children }) => {
     if (alerts.length === 1) setOverlaySate('hidden');
   };
 
+  const handleClick = (e: MouseEvent<HTMLDivElement>): void => {
+    // Fechar overlay
+    if (e.target === overlayRef.current) return;
+  };
+
   return (
     <alertContext.Provider value={{ sendInfoAlert }}>
       <Overlay
+        onClick={handleClick}
+        ref={overlayRef}
         animate={overlayState}
         transition={{ duration: 0.15 }}
         variants={{
