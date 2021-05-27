@@ -1,6 +1,24 @@
 {
-  "name": "web",
+  "name": "taskfy",
+  "description": "The best way to organize your work",
   "version": "0.1.0",
+  "author": {
+    "name": "Miguel Ângelo",
+    "email": "miguelcg958@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/miguel5g/taskfy#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miguel5g/taskfy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/miguel5g/taskfy/issues"
+  },
+  "engines": {
+    "yarn": "1.22.x",
+    "node": "14.16.x"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
