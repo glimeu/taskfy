@@ -1,18 +1,19 @@
+import React, { useRef } from 'react';
+import { FiLogIn } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import React, { useRef } from 'react';
 import { ValidationError } from 'yup';
+import Head from 'next/head';
+import Link from 'next/link';
 
 import { SignInSchema } from '../utils/Validators';
+import { useAlert } from '../hooks/Alert';
 import Logo from '../components/Logo';
-
-import { Container } from '../styles/pages/SignIn';
-import Input from '../components/Input';
-import Link from 'next/link';
 import BaseLink from '../components/BaseLink';
 import Button from '../components/Button';
-import Head from 'next/head';
-import { FiLogIn } from 'react-icons/fi';
+import Input from '../components/Input';
+
+import { Container } from '../styles/pages/SignIn';
 
 interface FormData {
   email: string;
@@ -22,13 +23,15 @@ interface FormData {
 const SingIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
+  const { sendInfoAlert } = useAlert();
+
   async function handleSubmit(data: FormData): Promise<void> {
     try {
       await SignInSchema.validate(data, {
         abortEarly: false,
       });
 
-      console.log(data);
+      sendInfoAlert('Lamentamos...', 'Infelizmente isto ainda não está funcionando.');
     } catch (err) {
       if (err instanceof ValidationError) {
         err.inner.forEach((fieldErr) => {

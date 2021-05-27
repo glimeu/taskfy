@@ -13,6 +13,7 @@ import BaseLink from '../components/BaseLink';
 import Button from '../components/Button';
 
 import { Container, InputGroup } from '../styles/pages/SignUp';
+import { useAlert } from '../hooks/Alert';
 
 interface FormData {
   name: string;
@@ -24,13 +25,15 @@ interface FormData {
 const SingUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
+  const { sendInfoAlert } = useAlert();
+
   async function handleSubmit(data: FormData): Promise<void> {
     try {
       await SignUpSchema.validate(data, {
         abortEarly: false,
       });
 
-      console.log(data);
+      sendInfoAlert('Lamentamos...', 'Infelizmente isto ainda não está funcionando.');
     } catch (err) {
       if (err instanceof ValidationError) {
         err.inner.forEach((fieldErr) => {
