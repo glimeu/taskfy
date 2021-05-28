@@ -23,7 +23,7 @@ const Section = styled.section`
 
   width: 100%;
   padding: 0 64px;
-  margin-top: 64px;
+  padding-top: 64px;
 
   & > h2 {
     margin: 0 auto;
@@ -120,7 +120,7 @@ export const PricingSection = styled(Section)`
       border-bottom-left-radius: 0;
     }
 
-    & h4 {
+    & h3 {
       color: ${({ theme }) => theme.colors.title};
       font-weight: 500;
       font-size: 1.87rem;
@@ -173,7 +173,7 @@ export const HowItWorksSection = styled(Section)`
 export const AboutAndContactSection = styled(Section)`
   flex-direction: column;
 
-  padding: 0 128px;
+  padding: inherit 128px 0 128px;
 
   & h2 {
     margin-bottom: 48px !important;

@@ -90,7 +90,7 @@ const Home: React.FC = () => {
 
             <div>
               <div>
-                <h4>Free</h4>
+                <h3>Free</h3>
                 <strong>
                   <i>R$</i>0<i>/mês</i>
                 </strong>
@@ -102,7 +102,7 @@ const Home: React.FC = () => {
                 </Link>
               </div>
               <div>
-                <h4>Básico</h4>
+                <h3>Básico</h3>
                 <strong>
                   <i>R$</i>7<i>/mês</i>
                 </strong>
@@ -114,7 +114,7 @@ const Home: React.FC = () => {
                 </Link>
               </div>
               <div>
-                <h4>Premium</h4>
+                <h3>Premium</h3>
                 <strong>
                   <i>R$</i>16<i>/mês</i>
                 </strong>
@@ -132,14 +132,14 @@ const Home: React.FC = () => {
             <h2>Como funciona?</h2>
             <span>Veja como você pode organizar melhor seu dia</span>
 
-            <iframe
+            {/* <iframe
               width="727"
               height="409"
               src="https://www.youtube.com/embed/0Fy7opKu46c"
               title="YouTube video player"
               frameBorder="0"
               allow="autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            ></iframe>
+            ></iframe> */}
           </HowItWorksSection>
 
           <AboutAndContactSection id="about">
