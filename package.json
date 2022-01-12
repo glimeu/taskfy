@@ -15,10 +15,6 @@
   "bugs": {
     "url": "https://github.com/miguel5g/taskfy/issues"
   },
-  "engines": {
-    "yarn": "1.22.x",
-    "node": "14.16.x"
-  },
   "private": true,
   "scripts": {
     "dev": "next dev",
